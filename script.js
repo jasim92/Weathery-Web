@@ -7,7 +7,7 @@ function getWheather(city){
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '512dce12famsh4a74388ddb60411p1e2f8ajsn2b411655e2b4',
+            'X-RapidAPI-Key': 'your api key',
             'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
         }
     };
