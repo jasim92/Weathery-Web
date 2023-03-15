@@ -19,11 +19,7 @@ function getWheather(city_name) {
     fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=' + city_name, options)
         .then(response => response.json())
         .then(response => getData(response, city_name))
-        .catch(err => {
-            element.innerHTML = `
-            <h1>${err}</h1>
-            <hr class="text-divider">
-            ` });
+        .catch(err => showError(err));
 
 }
 
@@ -52,39 +48,44 @@ function getData(response, city_name) {
         cloud_pct.innerHTML = response.cloud_pct;
         avg_temp.innerHTML = (parseInt(response.max_temp) + parseInt(response.min_temp)) / 2;
         if (parseInt(response.temp) > 25) {
-            document.querySelector('.card-body p').innerText = "Today is very hot weather and chances of temprature rise.";
+            document.querySelectorAll('.card-body p').innerText = "Today is very hot weather and chances of temprature rise.";
         }
         if (parseInt(response.temp) < 25 && parseInt(response.temp > 10)) {
-            document.querySelector('.card-body p').innerText = "Today is very good weather and chances of little cold";
+            document.querySelectorAll('.card-body p').innerText = "Today is very good weather and chances of little cold";
         }
         if (parseInt(response.temp) < 10) {
-            document.querySelector('.card-body p').innerText = "Today is very cold weather and stay inside your blanket";
+            document.querySelectorAll('.card-body p').innerText = "Today is very cold weather and stay inside your blanket";
         }
 
     }
     else{
         element.innerHTML= '';
         console.log('Request failed');
-        let error1 = response.messages;
-        let error2 = response.error;
         if (response.messages) {
-            element.innerHTML = `
-            <h1>${error1}</h1>
-            <hr class="text-divider">
-            `
+            let error1 = response.messages;
+            showError(error1);
         }
        if(response.error)
        {
-        element.innerHTML = `
-        <h1>${error2}</h1>
-        <hr class="text-divider">
-        `
+        let error2 = response.error;
+        showError(error2);
        }
 
     }
 
 
 }
+
+function showError(errorMsg) {
+    element.innerHTML = `
+      <h2>${errorMsg}</h2>
+      <hr class="text-divider">
+      <div class="d-flex justify-content-center">
+        <img src="images/sad.gif" alt="sad GIF" width="200" height="200">
+      </div>
+    `;
+  }
+  
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     getWheather(searchCityInput.value);

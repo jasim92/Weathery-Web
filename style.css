@@ -34,3 +34,7 @@ h2 {
 .thank{
     font-family: cursive;
 }
+#sad {
+    display: flex;
+    justify-content: center;
+}
