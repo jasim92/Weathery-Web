@@ -2,39 +2,60 @@
     background-color: #61bafa;
     margin-bottom: 10px;
 }
+
 h2 {
-  text-align: center;
-  font-family: cursive;
-  
+    text-align: center;
+    font-family: cursive;
+
 }
+
 .cards {
     display: flex;
     justify-content: center;
     margin: 2rem;
 }
+
 .card {
     margin-left: 1rem;
     margin-right: 1rem;
 }
+
 .card-img-top {
     max-width: 100%;
     height: auto;
-    object-fit:fill;
-    
+    object-fit: fill;
+
 }
+
 .text-divider {
     margin-left: 5rem;
     margin-right: 5rem;
 }
+
 #about {
     margin-left: 10rem;
     margin-right: 10rem;
     text-align: justify;
 }
-.thank{
+
+.thank {
     font-family: cursive;
 }
+
 #sad {
     display: flex;
     justify-content: center;
 }
+.progress {
+    width: 100%;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .progress-bar {
+    width: 10%; /* change this value to adjust the progress percentage */
+    height: 20px;
+    background-color: #4CAF50;
+  }
+  
